@@ -1,0 +1,111 @@
+using System;
+
+
+class Example
+{
+
+    delegate float MeDelegate(int[] n);
+
+    static void Main(string[] args)
+    {
+
+        int[] number = new int[12] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }; // array of ID
+        int[] size_byte = new int[12] { 57247, 98732, 134928, 77275, 29240, 15440, 70820, 139603, 63718, 143807, 190457, 40572 }; // array of Size(byte)
+        float[] fee = new float[] { 0.0887f, 0.1856f, 0.2307f, 0.1522f, 0.0532f, 0.0250f, 0.1409f, 0.2541f, 0.1147f, 0.2660f, 0.2933f, 0.0686f }; // array of fee(BTC)
+        int i;
+        Console.WriteLine("ID" + "\t" + "Size (byte)" + "\t" + "fee (BTC)" + "\t\n"); // head table
+
+        for (i = 0; i < 12; i++)
+        {
+            Console.WriteLine(number[i] + "\t" + size_byte[i] + "\t\t" + fee[i] + "\t\n"); // row table
+        }
+        //END Table
+
+        Console.WriteLine();
+
+
+        // find sum of fee(BTC)
+        float a = 0.0887f;
+        float b = 0.1856f;
+        float c = 0.2307f;
+        float d = 0.1522f;
+        float e = 0.0532f;
+        float f = 0.0250f;
+        float g = 0.1409f;
+        float h = 0.2541f;
+        float q = 0.1147f;
+        float r = 0.2660f;
+        float s = 0.2933f;
+        float t = 0.0686f;
+        float z = a + b + c + d + e + f + g + h + q + r + s + t;
+        //END  find sum of fee(BTC)
+
+
+        float reward = 12.5f; // reward
+        int block = 12; // all block
+        float halving = 6.25f; // cost of transaction from block used reward/all block
+        float y = (halving * block);
+        float Answer = z + reward + block + y; 
+
+
+
+
+
+        const int SIZE = 3;
+
+
+        int[] size_btye = { 57247, 98732, 134928, 77275, 29240, 15440, 70820, 139603, 63718, 143807, 190457, 40572 };
+        float[] result = new float[SIZE];
+
+        MeDelegate[] de = { FindSum, FindMin, FindMax, };
+
+        for (int j = 0; j < SIZE; j++)
+        {
+            result[j] = de[j](size_btye);
+        }
+
+
+        Console.Write("Sum_fee = " + z);
+        Console.WriteLine("\nSum_size: " + result[0]); // Sum of Size(byte)
+        Console.WriteLine("Min_size: " + result[1]); // cost min of Size(byte)
+        Console.WriteLine("Max_size: " + result[2]); // cost max of Size(byte)
+        Console.Write("\nAnswer = " + Answer + block + y); // Answer of me
+
+        Console.WriteLine();
+    }
+
+    static float FindMin(int[] n)
+    {
+        int min = n[0];
+        for (int j = 1; j < n.Length; j++)
+        {
+            if (n[j] < min)
+                min = n[j];
+        }
+        return min;
+    }
+
+    static float FindMax(int[] n)
+    {
+        int max = n[0];
+        for (int j = 1; j < n.Length; j++)
+        {
+            if (n[j] > max)
+                max = n[j];
+        }
+        return max;
+    }
+
+    static float FindSum(int[] n)
+    {
+        int sum = 0;
+        for (int j = 1; j < n.Length; j++)
+        {
+            sum += n[j];
+        }
+        return sum;
+    }
+
+
+}
+
